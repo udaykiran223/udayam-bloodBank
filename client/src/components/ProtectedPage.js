@@ -1,11 +1,12 @@
 import { message } from 'antd';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { GetCurrentUser } from '../apicalls/users';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUserName } from '../utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetCurrentUser } from '../redux/usersSlice';
 import { SetLoading } from '../redux/loadersSlice';
+
 
 function ProtectedPage({ children }) {
   const { currentUser } = useSelector((state) => state.users);
@@ -19,7 +20,6 @@ function ProtectedPage({ children }) {
       if (response.success) {
         message.success(response.message);
         dispatch(SetCurrentUser(response.data));
-
       } else {
         throw new Error(response.message);
       }
@@ -28,8 +28,6 @@ function ProtectedPage({ children }) {
       message.error(error.message);
     }
   }
-
-
 
 
   useEffect(() => {

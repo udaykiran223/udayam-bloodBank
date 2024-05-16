@@ -1,7 +1,6 @@
 
 
 import React, { useEffect } from 'react'
-import { GetInventory } from '../../../apicalls/inventory';
 import { Table, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { SetLoading } from '../../../redux/loadersSlice';
@@ -41,10 +40,12 @@ function Hospitals() {
         },{
             title: "Address",
             dataIndex: "address",
-        },{
-            title: "Owner Name",
-            dataIndex: "owner",
-        }, {
+        },
+        // {
+        //     title: "Owner Name",
+        //     dataIndex: "owner",
+        // },
+        {
             title: "Created At",
             dataIndex: "createdAt",
             render: (text) => getDateFormat(text),
